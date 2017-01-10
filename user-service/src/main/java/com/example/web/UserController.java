@@ -18,8 +18,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "{id}")
-    public @ResponseBody
-    User retrieveUser(@PathVariable("id") String id) {
+    public @ResponseBody User retrieveUser(@PathVariable("id") String id) {
         log.debug("Retrieving user with id: " + id);
 
         User user = new User().withFirstName("Arun").withLastName("Chalise");
