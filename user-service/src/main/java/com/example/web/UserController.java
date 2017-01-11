@@ -21,8 +21,13 @@ public class UserController {
     public @ResponseBody User retrieveUser(@PathVariable("id") String id) {
         log.debug("Retrieving user with id: " + id);
 
-        User user = new User().withFirstName("Arun").withLastName("Chalise");
-        userRepository.save(user);
+        User user = userRepository.findOne(id);
+        return user;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody User addUser(@RequestBody User user) {
+        user = userRepository.save(user);
         return user;
     }
 
